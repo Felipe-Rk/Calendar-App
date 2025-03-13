@@ -14,9 +14,12 @@ describe('AppController', () => {
     appController = app.get<AppController>(AppController);
   });
 
-  describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+  describe('/status', () => {
+    it('should return API status', () => {
+      const status = appController.getStatus(); // Supondo que você tenha esse método no seu AppController
+      expect(status).toHaveProperty('status', 'OK');
+      expect(status).toHaveProperty('timestamp');
+      expect(status).toHaveProperty('version', '1.0.0');
     });
   });
 });
