@@ -1,0 +1,10 @@
+<h2>
+    <mat-icon>account_circle</mat-icon> Perfil
+  </h2>
+  <div class="profile-info">
+    <p><strong>Nome:</strong> {{ user.username }}</p>
+    <p><strong>E-mail:</strong> {{ user.email }}</p>
+    <button (click)="logout()" class="btn btn-danger">
+      <mat-icon>logout</mat-icon> Sair
+    </button>
+  </div>
