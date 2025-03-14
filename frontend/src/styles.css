@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* styles.css */
+body {
+    background-color: #6fd46f8e; /* Cor de fundo suave */
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .container {
+    padding: 20px;
+    background-color: #4e61b446; 
+  }
+  
+  .mat-toolbar {
+    background-color: #ffffff; /* Cor primária do Angular Material */
+    color: white;
+  }
+  
+  .mat-card {
+    margin: 10px 0;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .mat-button {
+    margin: 0 8px;
+  }
