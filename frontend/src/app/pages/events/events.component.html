@@ -1,0 +1,75 @@
+<div class="container mt-4">
+  <h2>
+    <mat-icon>event</mat-icon> Meus Eventos
+  </h2>
+  <div *ngIf="isLoading" class="text-center">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Carregando...</span>
+    </div>
+  </div>
+  <ul class="list-group">
+    <li *ngFor="let event of events" class="list-group-item event-card">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <strong>{{ event.description }}</strong><br>
+          <small>
+            {{ event.start_time | date:'dd/MM/yyyy HH:mm' }} até {{ event.end_time | date:'dd/MM/yyyy HH:mm' }}
+          </small>
+        </div>
+        <div>
+          <button class="btn btn-warning btn-sm me-2" (click)="editEvent(event)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button class="btn btn-danger btn-sm" (click)="deleteEvent(event.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+  <h3 class="mt-4">
+    <mat-icon>add</mat-icon> Adicionar Evento
+  </h3>
+  <form (ngSubmit)="addEvent()" class="mb-4">
+    <div class="mb-3">
+      <label for="description" class="form-label">Descrição:</label>
+      <input type="text" id="description" class="form-control" [(ngModel)]="newEvent.description" name="description" required>
+    </div>
+    <div class="mb-3">
+      <label for="startTime" class="form-label">Hora de Início:</label>
+      <input type="datetime-local" id="startTime" class="form-control" [(ngModel)]="newEvent.startTime" name="startTime" required>
+    </div>
+    <div class="mb-3">
+      <label for="endTime" class="form-label">Hora de Término:</label>
+      <input type="datetime-local" id="endTime" class="form-control" [(ngModel)]="newEvent.endTime" name="endTime" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Adicionar</button>
+  </form>
+
+  <div *ngIf="editingEvent" class="mb-4">
+    <h3>
+      <mat-icon>edit</mat-icon> Editar Evento
+    </h3>
+    <form (ngSubmit)="updateEvent()">
+      <div class="mb-3">
+        <label for="editDescription" class="form-label">Descrição:</label>
+        <input type="text" id="editDescription" class="form-control" [(ngModel)]="editingEvent.description" name="editDescription" required>
+      </div>
+      <div class="mb-3">
+        <label for="editStartTime" class="form-label">Hora de Início:</label>
+        <input type="datetime-local" id="editStartTime" class="form-control" [(ngModel)]="editingEvent.start_time" name="editStartTime" required>
+      </div>
+      <div class="mb-3">
+        <label for="editEndTime" class="form-label">Hora de Término:</label>
+        <input type="datetime-local" id="editEndTime" class="form-control" [(ngModel)]="editingEvent.end_time" name="editEndTime" required>
+      </div>
+      <button type="submit" class="btn btn-success">Salvar</button>
+      <button type="button" class="btn btn-secondary ms-2" (click)="cancelEdit()">Cancelar</button>
+    </form>
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+</div>
