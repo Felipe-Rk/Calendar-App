@@ -1,0 +1,10 @@
+<mat-toolbar color="primary">
+  <span (click)="goToEvents()" style="cursor: pointer;">{{ title }}</span>
+  <span class="spacer"></span>
+  <button *ngIf="isLoggedIn" mat-button (click)="goToProfile()">Perfil</button>
+  <button *ngIf="isLoggedIn" mat-button (click)="logout()">Sair</button>
+</mat-toolbar>
+
+<div class="container mt-4">
+  <router-outlet></router-outlet>
+</div>
